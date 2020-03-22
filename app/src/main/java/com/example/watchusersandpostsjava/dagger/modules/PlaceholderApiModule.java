@@ -12,12 +12,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class PlaceholderApiModule {
-    private final String BASE_SERVER = "https://jsonplaceholder.typicode.com/";
-
 
     @Provides
     @NonNull
     PlaceholderApi providePlaceholderApi() {
+        String BASE_SERVER = "https://jsonplaceholder.typicode.com/";
         return new Retrofit.Builder()
                 .baseUrl(BASE_SERVER)
                 .addConverterFactory(GsonConverterFactory.create())

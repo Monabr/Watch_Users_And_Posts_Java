@@ -51,12 +51,7 @@ public class StartFragment extends Fragment {
     }
 
     public static StartFragment newInstance() {
-
-        Bundle args = new Bundle();
-
-        StartFragment fragment = new StartFragment();
-        fragment.setArguments(args);
-        return fragment;
+        return new StartFragment();
     }
 }
 

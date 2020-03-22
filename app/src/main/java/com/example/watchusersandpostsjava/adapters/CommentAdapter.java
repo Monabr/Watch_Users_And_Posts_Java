@@ -47,7 +47,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             super(itemView);
         }
 
-        void bind(Comment comment) {
+        void bind(@NonNull Comment comment) {
             binding.itemCommentTvEmail.setText(comment.getEmail());
             binding.itemCommentTvBody.setText(comment.getBody());
         }

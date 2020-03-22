@@ -53,7 +53,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             super(itemView);
         }
 
-        void bind(Post post) {
+        void bind(@NonNull Post post) {
             binding.itemPostTitle.setText(post.getTitle());
             binding.itemPostBody.setText(post.getBody());
             if (!(post.getComments() == null || post.getComments().isEmpty())) {

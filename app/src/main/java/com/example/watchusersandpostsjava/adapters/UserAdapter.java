@@ -52,7 +52,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             super(itemView);
         }
 
-        void bind(User user) {
+        void bind(@NonNull User user) {
             binding.itemUserTvName.setText(user.getName());
             binding.itemUserTvUsername.setText(user.getUsername());
             binding.itemUserTvEmail.setText(user.getEmail());
