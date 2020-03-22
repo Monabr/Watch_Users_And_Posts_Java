@@ -1,0 +1,2 @@
+rootProject.name='Watch Users And Posts Java'
+include ':app'
