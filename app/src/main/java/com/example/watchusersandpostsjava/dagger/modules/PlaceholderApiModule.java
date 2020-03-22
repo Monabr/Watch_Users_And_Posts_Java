@@ -17,7 +17,7 @@ public class PlaceholderApiModule {
 
     @Provides
     @NonNull
-    public PlaceholderApi providePlaceholderApi() {
+    PlaceholderApi providePlaceholderApi() {
         return new Retrofit.Builder()
                 .baseUrl(BASE_SERVER)
                 .addConverterFactory(GsonConverterFactory.create())

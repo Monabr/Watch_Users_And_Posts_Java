@@ -17,8 +17,14 @@ import com.example.watchusersandpostsjava.viewModels.StartViewModel;
 
 public class StartFragment extends Fragment {
 
+    /**
+     * Using to get list of users
+     */
     private StartViewModel viewModel;
 
+    /**
+     * For manipulation with view avoiding {@link View#findViewById(int)}
+     */
     private FragmentStartBinding binding;
 
     @Override

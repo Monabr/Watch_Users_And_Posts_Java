@@ -50,14 +50,14 @@ dependencies {
 
     //Retrofit 2
     implementation 'com.squareup.retrofit2:retrofit:2.7.2'
-    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.2'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.4.1'
     implementation 'com.squareup.retrofit2:converter-scalars:2.7.2'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.2'
 
     //Dagger 2
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.26'
-    implementation 'com.google.dagger:dagger:2.26'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.27'
+    implementation 'com.google.dagger:dagger:2.27'
     compileOnly 'com.squareup.inject:assisted-inject-annotations-dagger2:0.5.2'
     annotationProcessor 'com.squareup.inject:assisted-inject-processor-dagger2:0.5.2'
 
@@ -68,6 +68,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     //Navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
+    implementation "androidx.navigation:navigation-fragment:2.3.0-alpha04"
+    implementation "androidx.navigation:navigation-ui:2.3.0-alpha04"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.0-alpha04"
 }

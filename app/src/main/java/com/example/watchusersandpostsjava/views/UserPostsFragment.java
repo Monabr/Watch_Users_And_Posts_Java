@@ -1,6 +1,7 @@
 package com.example.watchusersandpostsjava.views;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.watchusersandpostsjava.R;
 import com.example.watchusersandpostsjava.adapters.PostAdapter;
 import com.example.watchusersandpostsjava.databinding.FragmentUserPostsBinding;
 import com.example.watchusersandpostsjava.viewModels.UserPostsViewModel;
@@ -18,11 +20,21 @@ import com.example.watchusersandpostsjava.viewModels.UserPostsViewModel;
 public class UserPostsFragment extends Fragment {
 
     public static final String USER_ID = "userId";
+    private static final String USER_POSTS_FRAGMENT = "UserPostsFragment";
 
+    /**
+     * Using to get posts and comments for them
+     */
     private UserPostsViewModel viewModel;
 
+    /**
+     * For manipulation with view avoiding {@link View#findViewById(int)}
+     */
     private FragmentUserPostsBinding binding;
 
+    /**
+     * Local link for {@link UserPostsFragment#viewModel} to make {@link PostAdapter#notifyItemChanged(int)} when comments will come for a post
+     */
     private PostAdapter adapter;
 
     @Override
@@ -41,8 +53,11 @@ public class UserPostsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        assert getArguments() != null;
-        viewModel.onActivityCreated(getArguments().getInt(USER_ID));
+        if (getArguments() != null) {
+            viewModel.onActivityCreated(getArguments().getInt(USER_ID));
+        } else {
+            Log.e(USER_POSTS_FRAGMENT, getString(R.string.User_posts_fragment_no_id));
+        }
         adapter = new PostAdapter();
         binding.fragmentUserPostsRvPostList.setAdapter(adapter);
         viewModel.setAdapter(adapter);

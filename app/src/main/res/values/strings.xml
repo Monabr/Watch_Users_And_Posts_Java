@@ -11,4 +11,6 @@
     <string name="text">"Text: "</string>
     <string name="users">Users</string>
     <string name="posts">Posts</string>
+    <string name="Item_post_expand_arrow">Expand arrow</string>
+    <string name="User_posts_fragment_no_id">"ID of users wasn't passed"</string>
 </resources>

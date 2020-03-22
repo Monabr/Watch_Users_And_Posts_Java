@@ -14,5 +14,6 @@ import dagger.Component;
 public interface StartComponent {
 
     void inject(StartViewModel startViewModel);
+
     void inject(UserPostsViewModel userPostsViewModel);
 }

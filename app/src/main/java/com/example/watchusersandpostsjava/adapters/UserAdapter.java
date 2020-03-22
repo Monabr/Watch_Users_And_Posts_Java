@@ -17,8 +17,12 @@ import com.example.watchusersandpostsjava.views.UserPostsFragment;
 
 import java.util.List;
 
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     private List<User> users;
+
+    /**
+     * For manipulation with view avoiding {@link View#findViewById(int)}
+     */
     private ItemUserBinding binding;
 
     public UserAdapter(List<User> users) {
@@ -34,7 +38,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-         holder.bind(users.get(position));
+        holder.bind(users.get(position));
     }
 
     @Override
@@ -44,23 +48,23 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
 
         void bind(User user) {
-             binding.itemUserTvName.setText(user.getName());
-             binding.itemUserTvUsername.setText(user.getUsername());
-             binding.itemUserTvEmail.setText(user.getEmail());
-             binding.itemUserTvAddress.setText((user.getAddress().getCity() + ", " + user.getAddress().getStreet() + ", " + user.getAddress().getSuite()));
+            binding.itemUserTvName.setText(user.getName());
+            binding.itemUserTvUsername.setText(user.getUsername());
+            binding.itemUserTvEmail.setText(user.getEmail());
+            binding.itemUserTvAddress.setText((user.getAddress().getCity() + ", " + user.getAddress().getStreet() + ", " + user.getAddress().getSuite()));
 
-             if(!itemView.hasOnClickListeners()) {
-                 itemView.setOnClickListener(v -> {
-                     Bundle args = new Bundle();
-                     args.putInt(UserPostsFragment.USER_ID, user.getId());
-                     Navigation.findNavController((MainContainerActivity)(itemView.getContext()), R.id.container).navigate(R.id.action_startFragment_to_userPostsFragment, args);
-                 });
-             }
+            if (!itemView.hasOnClickListeners()) {
+                itemView.setOnClickListener(v -> {
+                    Bundle args = new Bundle();
+                    args.putInt(UserPostsFragment.USER_ID, user.getId());
+                    Navigation.findNavController((MainContainerActivity) (itemView.getContext()), R.id.container).navigate(R.id.action_startFragment_to_userPostsFragment, args);
+                });
+            }
         }
     }
 }

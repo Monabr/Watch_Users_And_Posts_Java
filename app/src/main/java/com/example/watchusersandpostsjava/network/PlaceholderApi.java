@@ -16,7 +16,7 @@ public interface PlaceholderApi {
     Call<List<User>> getUsers();
 
     @GET("posts")
-    Single<List<Post>> getUserPosts(@Query("userId")int userId);
+    Single<List<Post>> getUserPosts(@Query("userId") int userId);
 
     @GET("comments")
     Single<List<Comment>> getPostComments(@Query("postId") int postId);

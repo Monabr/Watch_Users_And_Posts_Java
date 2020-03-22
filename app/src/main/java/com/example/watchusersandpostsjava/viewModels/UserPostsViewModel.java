@@ -20,10 +20,25 @@ public class UserPostsViewModel extends ViewModel {
     private static final String POSTS = "Posts";
     private static final String COMMENTS = "Comments";
 
+    /**
+     * Usual repository layer for working with data
+     */
     @Inject
     PlaceholderRepository repository;
+
+    /**
+     * For dispose of RX
+     */
     private CompositeDisposable compositeDisposable;
+
+    /**
+     * List of posts that will be observed by fragment
+     */
     private MutableLiveData<List<Post>> posts;
+
+    /**
+     * link to make {@link PostAdapter#notifyItemChanged(int)} when comments will come for a post
+     */
     private PostAdapter adapter;
 
     public PostAdapter getAdapter() {
@@ -49,12 +64,20 @@ public class UserPostsViewModel extends ViewModel {
         posts = new MutableLiveData<>();
     }
 
+    /**
+     * Using to dispose RX when we no need in viewModel
+     */
     @Override
     protected void onCleared() {
         compositeDisposable.dispose();
         super.onCleared();
     }
 
+    /**
+     * Start to getting users posts when we enter to the fragment
+     *
+     * @param userId for getting his posts
+     */
     public void onActivityCreated(int userId) {
         compositeDisposable.add(repository.getUserPosts(userId).subscribe(
                 posts -> {
@@ -67,14 +90,9 @@ public class UserPostsViewModel extends ViewModel {
                                             posts.get(finalIndex).setComments(comments);
                                             adapter.notifyItemChanged(finalIndex);
                                         },
-                                        throwable -> {
-                                            Log.e(COMMENTS, throwable.getLocalizedMessage(), throwable);
-                                        }));
+                                        throwable -> Log.e(COMMENTS, throwable.getLocalizedMessage(), throwable)));
                     }
                 },
-                throwable -> {
-                    Log.e(POSTS, throwable.getLocalizedMessage(), throwable);
-                }
-        ));
+                throwable -> Log.e(POSTS, throwable.getLocalizedMessage(), throwable)));
     }
 }

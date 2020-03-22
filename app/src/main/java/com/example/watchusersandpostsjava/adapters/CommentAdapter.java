@@ -8,18 +8,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.watchusersandpostsjava.databinding.ItemCommentBinding;
-import com.example.watchusersandpostsjava.databinding.ItemPostBinding;
 import com.example.watchusersandpostsjava.models.Comment;
-import com.example.watchusersandpostsjava.models.Post;
 
 import java.util.List;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
     private List<Comment> comments;
 
+    /**
+     * For manipulation with view avoiding {@link View#findViewById(int)}
+     */
     private ItemCommentBinding binding;
 
-    public CommentAdapter(List<Comment> comments) {
+    CommentAdapter(List<Comment> comments) {
         this.comments = comments;
     }
 
@@ -32,7 +33,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            holder.bind(comments.get(position));
+        holder.bind(comments.get(position));
     }
 
     @Override
@@ -42,7 +43,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
 

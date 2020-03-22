@@ -33,7 +33,7 @@ public class PlaceholderRepositoryImpl implements PlaceholderRepository {
         placeholderApi.getUsers().enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(@NotNull Call<List<User>> call, @NotNull Response<List<User>> response) {
-               mutableLiveData.postValue(response.body());
+                mutableLiveData.postValue(response.body());
             }
 
             @Override
@@ -47,11 +47,11 @@ public class PlaceholderRepositoryImpl implements PlaceholderRepository {
 
     @Override
     public Single<List<Post>> getUserPosts(int userId) {
-           return placeholderApi.getUserPosts(userId).observeOn(AndroidSchedulers.mainThread());
+        return placeholderApi.getUserPosts(userId).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
     public Single<List<Comment>> getPostComments(int postId) {
-          return placeholderApi.getPostComments(postId).observeOn(AndroidSchedulers.mainThread());
+        return placeholderApi.getPostComments(postId).observeOn(AndroidSchedulers.mainThread());
     }
 }
