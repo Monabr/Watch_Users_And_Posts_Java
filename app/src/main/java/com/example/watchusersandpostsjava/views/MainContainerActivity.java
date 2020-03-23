@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.watchusersandpostsjava.R;
 
+/**
+ * Main container for all application fragments since it's single activity application
+ */
 public class MainContainerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
